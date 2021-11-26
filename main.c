@@ -56,7 +56,6 @@ void render_satelite(float gravidade){
 	    glPushMatrix();
 	        glRotatef(death_star.Translacao, 0, 1, 0);
 	        glTranslatef(gravidade, 0, 100);
-	        printf("\n\nValor em gravidade = %.2f\n\n", gravidade);
 	        glRotatef(death_star.Rotacao, 0, 1, 0);
 	        glRotatef(-267, 1, 0, 0);
 	        criaSphere(0.95 * surge_death_star, death_star.Faces, death_star.Faces);
@@ -83,9 +82,9 @@ void iluminacao(){
 }
 
 void estadoCamera(){
-	camera.X = 600 * sin(anguloCameraA) * cos(anguloCameraB);
-    camera.Y = 600 * sin(anguloCameraA);
-    camera.Z = 600 * cos(anguloCameraA) * sin(anguloCameraB);
+	camera.X = 800 * sin(anguloCameraA) * cos(anguloCameraB);
+    camera.Y = 800 * sin(anguloCameraA);
+    camera.Z = 800 * cos(anguloCameraA) * sin(anguloCameraB);
     switch(modoCamera){
     	case 1:
             gluLookAt(cursor.X+camera.X, camera.Y, cursor.Z+camera.Z, cursor.X+0, 0, cursor.Z+0, 0, 1, 0);  //Visualização da cena - Ponto do olho; Ponto de referência de variação;

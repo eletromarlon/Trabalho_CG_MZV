@@ -9,8 +9,9 @@
 #include "math.h"       //No linux se faz necessário a utilização dessas bibliotecas em separado para evitar erros. (Ou -lm no linker)
 #include "stdbool.h"    //Também é necessário fazer algumas chamadas no linker do compilador na guia settings->compiler...
 #include "objetosSolares.h"
+#define distPrimitica 400.0
 
-float distanciaPrimitiva=400.0;     //Posição inicial da estrela da morte em relação a terra
+float distanciaPrimitiva= distPrimitica;     //Posição inicial da estrela da morte em relação a terra
 float multiplicador = 0.9995;       //Indice gravitacional
 
 /**Carregamento das texturas salvas na pasta resources */
@@ -103,7 +104,7 @@ void estadoExecucao(){
     glColor3f(1, 1, 1);
     iluminacao();
     if (distanciaPrimitiva <= 130){          //Inverter a força gravitacional gerando efeito estilingue
-        multiplicador=1.0004;   //Efeito estilingue gravitacional com saída de orbita mais lenta (0,04%)
+        multiplicador=1.00024;   //Efeito estilingue gravitacional com saída de orbita mais lenta (0,04%)
     }
     render_satelite(distanciaPrimitiva);
     distanciaPrimitiva=distanciaPrimitiva*multiplicador;       //Força gravitacional com 0,05% de atração
@@ -183,6 +184,14 @@ void estadoTeclado(unsigned char key, int x, int y){
 				surge_death_star = 0;
 			}
 		break;
+		case 'r':
+            distanciaPrimitiva = distPrimitica; //Reset de distancia primitiva
+            multiplicador = 0.9995;
+        break;
+        case 'R':
+            distanciaPrimitiva = distPrimitica; //Reset de distancia primitiva
+            multiplicador = 0.9995;
+        break;
 	}
 }
 
